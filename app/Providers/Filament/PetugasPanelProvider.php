@@ -26,6 +26,7 @@ class PetugasPanelProvider extends PanelProvider
             ->default()
             ->id('petugas')
             ->path('petugas')
+            //menambahkan halaman login
             ->login()
             ->colors([
                 'primary' => Color::Amber,

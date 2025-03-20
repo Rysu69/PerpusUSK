@@ -17,8 +17,6 @@ return new class extends Migration
             $table->foreignId('id_pengunjung')->constrained('pengunjung');
             $table->date('tanggal_peminjaman');
             $table->date('tanggal_terakhir_pengembalian');
-            $table->date('tanggal_pengembalian')->nullable();
-            $table->enum('status', ['dipinjam', 'dikembalikan','terlambat']);
             $table->timestamps();
         });
     }

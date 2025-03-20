@@ -15,22 +15,29 @@ use Illuminate\Database\Eloquent\SoftDeletingScope;
 
 class PengunjungResource extends Resource
 {
+    //model yang digunakan
     protected static ?string $model = Pengunjung::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    //label
+    protected static ?string $navigationIcon = 'heroicon-o-user';
 
+    //mengatur form
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
+                //nama
                 Forms\Components\TextInput::make('name')
                     ->required(),
+                //email
                 Forms\Components\TextInput::make('email')
                     ->email()
                     ->required(),
+                //password
                 Forms\Components\TextInput::make('password')
                     ->password()
                     ->required(),
+                //konfirmasi password
                 Forms\Components\TextInput::make('password_confirmation')
                     ->password()
                     ->same('password')
@@ -38,22 +45,21 @@ class PengunjungResource extends Resource
             ]);
     }
 
+    //mengatur tabel
     public static function table(Table $table): Table
     {
         return $table
             ->columns([
+                //id
+                Tables\Columns\TextColumn::make('id')
+                    ->label('ID')
+                    ->searchable(),
+                //nama
                 Tables\Columns\TextColumn::make('name')
                     ->searchable(),
+                //email
                 Tables\Columns\TextColumn::make('email')
                     ->searchable(),
-                Tables\Columns\TextColumn::make('created_at')
-                    ->dateTime()
-                    ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),
-                Tables\Columns\TextColumn::make('updated_at')
-                    ->dateTime()
-                    ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),
             ])
             ->filters([
                 //

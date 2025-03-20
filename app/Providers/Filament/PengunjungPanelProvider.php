@@ -25,7 +25,9 @@ class PengunjungPanelProvider extends PanelProvider
         return $panel
             ->id('pengunjung')
             ->path('pengunjung')
+            //menambahkan halam login
             ->login()
+            //menambahkan halaman registrasi
             ->registration()
             ->colors([
                 'primary' => Color::Amber,

@@ -8,7 +8,10 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class pengunjung extends Authenticatable
 {
+    //table yangdigunakan
     protected $table = 'pengunjung';
+
+    //field yang dapat diisi
     protected $fillable = ['name', 'email', 'password'];
     protected $hidden = [
         'password',

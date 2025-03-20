@@ -15,22 +15,30 @@ use Illuminate\Database\Eloquent\SoftDeletingScope;
 
 class BukuResource extends Resource
 {
+    //model yang digunakan
     protected static ?string $model = Buku::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    //icon navigasi
+    protected static ?string $navigationIcon = 'heroicon-o-book-open';
 
-    protected static ?string $label = 'Daftar Buku';
-    
+    //label
+    protected static ?string $label = 'Buku';
+
+    //mengatur form
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
+                //judul
                 Forms\Components\TextInput::make('judul')
                     ->required(),
+                //pengarang
                 Forms\Components\TextInput::make('pengarang')
                     ->required(),
+                //penerbit
                 Forms\Components\TextInput::make('penerbit')
                     ->required(),
+                //tahun terbit
                 Forms\Components\TextInput::make('tahun_terbit')
                     ->required()
                     ->numeric(),
@@ -41,22 +49,18 @@ class BukuResource extends Resource
     {
         return $table
             ->columns([
+                //judul
                 Tables\Columns\TextColumn::make('judul')
                     ->searchable(),
+                //pengarang
                 Tables\Columns\TextColumn::make('pengarang')
                     ->searchable(),
+                //penerbit
                 Tables\Columns\TextColumn::make('penerbit')
                     ->searchable(),
+                //tahun terbit
                 Tables\Columns\TextColumn::make('tahun_terbit')
                     ->sortable(),
-                Tables\Columns\TextColumn::make('created_at')
-                    ->dateTime()
-                    ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),
-                Tables\Columns\TextColumn::make('updated_at')
-                    ->dateTime()
-                    ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),
             ])
             ->filters([
                 //
